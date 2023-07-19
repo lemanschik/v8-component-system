@@ -14,3 +14,10 @@ make all
 
 If you need a more Complet Implementation as example look into lemanschik/b8g
 
+## Runtimes Size Comparison
+- Deno 108 mb
+- Just Dynamic Linked 108 MB
+- NodeJS ???
+- Chromium Miditeran Platform size ~500mb
+- this v8 component system aka smol 83mb
+- libv8_monolith 65 mb
