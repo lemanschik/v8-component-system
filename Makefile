@@ -21,20 +21,22 @@ builtins.o: ## compile builtins with build dependencies
 
 compile:
 	$(CC) -c ${FLAGS} -std=c++17 -DV8_COMPRESS_POINTERS -I. -I./deps/v8/include -g -O3 -march=native -mtune=native -Wpedantic -Wall -Wextra -flto -Wno-unused-parameter main.cc
-	$(CC) -c ${FLAGS} -DNAMESPACE='${TARGET}' -DVERSION='"${RELEASE}"' -std=c++17 -DV8_COMPRESS_POINTERS -I. -I./deps/v8/include -g -O3 -march=native -mtune=native -Wpedantic -Wall -Wextra -flto -Wno-unused-parameter ${TARGET}.cc
+	$(CC) -c ${FLAGS} -DNAMESPACE='${TARGET}' -DVERSION='"${RELEASE}"' -std=c++17 -DV8_COMPRESS_POINTERS -I. -I./deps/v8/include -g -O3 -march=native -mtune=native -Wpedantic -Wall -Wextra -flto -Wno-unused-parameter components.cc
 
 main: deps/v8/libv8_monolith.a ## link the main application dynamically
-	$(CC) -g -rdynamic -flto -pthread -m64 -Wl,--start-group deps/v8/libv8_monolith.a main.o ${TARGET}.o builtins.o -Wl,--end-group ${LFLAG} ${LIB} -o ${TARGET} -Wl,-rpath=/usr/local/lib/${TARGET}
+	$(CC) -g -rdynamic -flto -pthread -m64 -Wl,--start-group deps/v8/libv8_monolith.a main.o ${TARGET}.o builtins.o -Wl,--end-group ${LFLAG} ${LIB} -o ${TARGET} 
+# -Wl,-rpath=/usr/local/lib/${TARGET}
 
 main-static: deps/v8/libv8_monolith.a ## link the main application statically
-	$(CC) -g -static -flto -pthread -m64 -Wl,--start-group deps/v8/libv8_monolith.a main.o ${TARGET}.o builtins.o -Wl,--end-group ${LFLAG} ${LIB} -o ${TARGET} -Wl,-rpath=/usr/local/lib/${TARGET}
+	$(CC) -g -static -flto -pthread -m64 -Wl,--start-group deps/v8/libv8_monolith.a main.o ${TARGET}.o builtins.o -Wl,--end-group ${LFLAG} ${LIB} -o ${TARGET} 
+# -Wl,-rpath=/usr/local/lib/${TARGET}
 
 debug: ## strip debug symbols into a separate file
 	objcopy --only-keep-debug ${TARGET} ${TARGET}.debug
 	strip --strip-debug --strip-unneeded ${TARGET}
 	objcopy --add-gnu-debuglink=${TARGET}.debug ${TARGET}
 
-all:
+all: ## Run this it does it all correct
 	$(MAKE) clean builtins.o compile main debug
 
 clean: ## tidy up
