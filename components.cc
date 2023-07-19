@@ -1,4 +1,4 @@
-#include "smol.h"
+#include "components.h"
 
 std::map<std::string, NAMESPACE::builtin*> NAMESPACE::builtins;
 std::map<std::string, NAMESPACE::register_plugin> NAMESPACE::modules;
