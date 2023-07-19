@@ -21,3 +21,11 @@ If you need a more Complet Implementation as example look into lemanschik/b8g
 - Chromium Miditeran Platform size ~500mb
 - this v8 component system aka smol 83mb
 - libv8_monolith 65 mb
+
+## Striped binary executeable Builds
+- B8G Minimal Build Static ~???
+- Deno Minimal Build Static ~???
+
+## Todo
+- use lemanschik/deno-loader and write some benchmarks.
+  - publish the benchmarks later 
