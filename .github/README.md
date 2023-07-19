@@ -1,4 +1,4 @@
-# v8 component system -smol
+# v8 component system - smol
 Andrew Johnstons JustJS Component Pattern as build Skeletten is mainly used for education
 and to have a Central Place to Update the Component Pattern Indipenedent.
 
