@@ -18,6 +18,8 @@ If you need a more Complet Implementation as example look into lemanschik/b8g
 - Deno 108 mb
 - Just Dynamic Linked 108 MB
 - NodeJS ???
+- graal-node
+- graaljs 
 - Chromium Miditeran Platform size ~500mb
 - this v8 component system aka smol 83mb
 - libv8_monolith 65 mb
@@ -25,7 +27,8 @@ If you need a more Complet Implementation as example look into lemanschik/b8g
 ## Striped binary executeable Builds
 - B8G Minimal Build Static ~???
 - Deno Minimal Build Static ~???
-
+- graaljs SubstrateVM ~???
+  
 ## Todo
 - use lemanschik/deno-loader and write some benchmarks.
   - publish the benchmarks later 
